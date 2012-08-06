@@ -100,3 +100,7 @@
   (interactive)
   nil)
 (setq split-window-preferred-function 'no-split-window)
+
+;; Load SConscript/SConstruct files in python-mode
+(add-to-list 'auto-mode-alist '("SConscript" . python-mode))
+(add-to-list 'auto-mode-alist '("SConstruct" . python-mode))

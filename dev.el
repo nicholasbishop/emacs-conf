@@ -129,3 +129,6 @@
 	(insert "/")))
 
 (global-set-key "\C-zs" 'c-section-comment)
+
+;; Comments start with a '*'
+(setq c-block-comment-prefix "*")
