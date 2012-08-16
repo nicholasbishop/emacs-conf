@@ -132,3 +132,20 @@
 
 ;; Comments start with a '*'
 (setq c-block-comment-prefix "*")
+
+;; insert header guards
+(defun c-header-guards ()
+  (interactive)
+  (let ((guard (read-string
+                "Guard: "
+                ;; Default value is based on the filename
+                (replace-regexp-in-string "\\." "_"
+                                          (upcase (buffer-name))))))
+    ;; Insert test and define before point
+    (insert (concat "#ifndef " guard "\n#define " guard "\n\n")))
+  ;; Insert endif after point
+  (let ((pos (point)))
+    (insert "\n\n#endif\n")
+    (goto-char pos)))
+
+(global-set-key "\C-zi" 'c-header-guards)
