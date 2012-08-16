@@ -101,6 +101,7 @@
 (require 'grep)
 
 (setq grep-find-ignored-directories (cons "cmake-*" grep-find-ignored-directories))
+(setq grep-find-ignored-directories (cons "obj" grep-find-ignored-directories))
 
 ;; This stinks, but no idea how to do this otherwise; it's a direct
 ;; copy-paste of rgrep, but uses git-root-dir rather than
@@ -194,6 +195,8 @@
 (global-set-key "\C-c\C-j" 'grep-git-root)
 
 (defvar open-search-git-history "") ;; TODO
+
+;; TODO: at least clean up the ignore directory stuff (cmake-* and obj)
 (defun open-search-git-root ()
   (interactive)
   (let* ((filename (read-from-minibuffer "Filename: " ""))
@@ -204,14 +207,15 @@
 	(setq open-search-git-filename filename)
 
 	(let* ((dir (git-root-dir))
-		   (find-str (concat "find " dir " -iname '" pattern "'"))
+		   (find-str (concat "find " dir " -name 'obj' -prune , -iname '" pattern "'"))
 		   (num-match (shell-command-to-string (concat find-str " | wc -l"))))
 	  (if (string= num-match "1\n")
 		  ;; only one match, load it
 		  (find-file (substring (shell-command-to-string find-str) 0 -1))
 		;; multiple matches, pass off to find-dired
 		(find-dired dir
-					(concat " -iname 'cmake-*' -prune , -iname " pattern))))))
+					(concat " -iname 'cmake-*' -prune , -name 'obj' -prune , -iname "
+                            pattern))))))
 
 (global-set-key "\C-c\C-f" 'open-search-git-root)
 (global-set-key "\C-cf" 'open-search-git-root)
