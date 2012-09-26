@@ -193,6 +193,7 @@
 	      (setq default-directory dir)))))))
 
 (global-set-key "\C-c\C-j" 'grep-git-root)
+(global-set-key "\C-cj" 'grep-git-root)
 
 (defvar open-search-git-history "") ;; TODO
 
