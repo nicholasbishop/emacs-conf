@@ -59,7 +59,7 @@
 (add-hook 'c-mode-common-hook 'c-mode-blender-hook)
 
 ;; Blender-specific
-(global-set-key "\C-z3"
+(global-set-key "\C-z4"
 				(lambda ()
 				  (interactive)
 				  (insert "scripts/startup/bl_ui/")))
