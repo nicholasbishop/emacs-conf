@@ -104,3 +104,17 @@
 ;; Load SConscript/SConstruct files in python-mode
 (add-to-list 'auto-mode-alist '("SConscript" . python-mode))
 (add-to-list 'auto-mode-alist '("SConstruct" . python-mode))
+
+;; Load .qrc in xml-mode
+(add-to-list 'auto-mode-alist '("\\.qrc\\'" . xml-mode))
+
+(defun shell-dir ()
+  "Run shell in specified directory"
+  (interactive)
+  ;; change to the user-specified directory
+  (cd (read-directory-name "Shell directory: "))
+  ;; start shell
+  (call-interactively 'shell)
+  ;; protect window
+  (set-window-dedicated-p (selected-window) t))
+(global-set-key "\C-z3" 'shell-dir)
