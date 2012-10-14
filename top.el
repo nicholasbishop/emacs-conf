@@ -43,7 +43,7 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-;; Combine C-a and M-m into C-a, change M-m to kill *entire* line
+;; Combine C-a and M-m into C-a, change C-S-m to kill *entire* line
 (global-set-key "\C-a"
 				(lambda ()
 				  (interactive)
@@ -51,7 +51,8 @@
 					(back-to-indentation)
 					(if (= curpoint (point))
 						(move-beginning-of-line nil)))))
-(global-set-key "\M-m"
+
+(global-set-key "\C-M"
 				(lambda ()
 				  (interactive)
 				  (move-beginning-of-line nil)

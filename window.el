@@ -2,8 +2,6 @@
 (winner-mode)
 
 ;; window movement
-(global-set-key "\C-\M-k" (lambda () (interactive) (other-window 1)))
-(global-set-key "\C-\M-j" (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "C-S-k") (lambda () (interactive) (other-window 1)))
 (global-set-key (kbd "C-S-j") (lambda () (interactive) (other-window -1)))
 
