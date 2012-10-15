@@ -52,7 +52,7 @@
 					(if (= curpoint (point))
 						(move-beginning-of-line nil)))))
 
-(global-set-key "\C-M"
+(global-set-key (kbd "C-S-m")
 				(lambda ()
 				  (interactive)
 				  (move-beginning-of-line nil)
