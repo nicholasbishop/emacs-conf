@@ -12,6 +12,8 @@
 		     (select-window
 		      (get-buffer-window "*compilation*"))
 		     (recompile))))
+;; kill compilation key
+(global-set-key "\C-zk" 'kill-compilation)
 
 ;; key to switch to debugger window
 (global-set-key "\C-zd"
@@ -29,7 +31,6 @@
 
 ;; keys to start and stop the debugged process
 (global-set-key "\C-zr" 'gud-run)
-(global-set-key "\C-zk" 'gud-stop-subjob)
 
 (push "\\*compil.*" same-window-regexps)
 
