@@ -121,3 +121,8 @@
   ;; protect window
   (set-window-dedicated-p (selected-window) t))
 (global-set-key "\C-z3" 'shell-dir)
+
+;; markdown
+(require 'markdown-mode)
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
