@@ -121,7 +121,7 @@
     `(border ((t (:background ,zenburn-bg))))
     `(button ((t (:foreground ,zenburn-yellow :background "#506070"
 		   :weight bold :underline t))))
-    `(cursor ((t (:background "#aaaaaa" :foreground nil))))
+    `(cursor ((t (:background "#ffff00" :foreground nil))))
     `(escape-glyph-face ((t (:foreground ,zenburn-red))))
     `(minibuffer-prompt ((t (:foreground ,zenburn-yellow))))
     `(mode-line ((t (:foreground ,zenburn-yellow :background "#1e2320"
