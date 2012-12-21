@@ -85,6 +85,8 @@
 (load "tex")
 ;; json mode
 (load "json-mode")
+(setq auto-mode-alist
+   (cons '("\\.json" . json-mode) auto-mode-alist))
 ;; cmake mode
 (load "cmake-mode")
 (require 'cmake-mode)
