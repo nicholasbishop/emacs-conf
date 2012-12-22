@@ -66,6 +66,9 @@
 (server-force-delete)
 (server-start)
 
+;; mode line
+(load "mode-line")
+
 ;; ;; color theme (emacs 23)
 ;; (add-to-list 'load-path (concat dd "color-theme-6.6.0"))
 ;; (load-library "color-theme")
