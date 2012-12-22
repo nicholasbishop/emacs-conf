@@ -157,3 +157,6 @@
     (goto-char pos)))
 
 (global-set-key "\C-zi" 'c-header-guards)
+
+;; Rust
+(require 'rust-mode)
