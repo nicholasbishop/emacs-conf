@@ -68,34 +68,41 @@
 ;; enable electric-pair-mode
 (electric-pair-mode)
 
+(defun do-in-other-dir (dir action)
+  "Run action in dir without blowing away current buffer's directory"
+  (let ((old-dir default-directory)
+		(old-buf (current-buffer)))
+	;; change to the specified directory
+	(cd dir)
+	;; run action
+	(call-interactively action)
+	;; switch back to the previous buffer and restore the current
+	;; working directory
+	(let ((cur-buf (current-buffer)))
+	  (set-buffer old-buf)
+	  (cd old-dir)
+	  ;; switch back to the new buffer
+	  (set-buffer cur-buf))))
+
 (defun compile-dir ()
   "Run compile in specified directory"
   (interactive)
-  (let ((cur-dir default-directory))
-	;; change to the user-specified compile directory
-	(cd (read-directory-name "Build directory: "))
-	;; start compile
-	(call-interactively 'compile)
-	;; protect window
-	(set-window-dedicated-p (selected-window) t)
-	;; restore current directory
-	;(cd cur-dir)))
-	))
+  (do-in-other-dir
+   (read-directory-name "Build directory: ")
+   'compile)
+  ;; protect compile window
+  (set-window-dedicated-p (selected-window) t))
 
 (defun gud-gdb-dir ()
   "Run gud-gdb in specified directory"
   (interactive)
-  (let ((cur-dir default-directory))
-	;; change to the user-specified compile directory
-	(cd (read-directory-name "Debug directory: "))
-	;; start gud-gdb
-	(call-interactively 'gud-gdb)
-	(gud-gdb-colors-mode)
-	;; protect window
-	(set-window-dedicated-p (selected-window) t)
-	;; restore current directory
-	;(cd cur-dir)))
-	))
+  (do-in-other-dir
+   (read-directory-name "Debug directory: ")
+   'gud-gdb)
+  ;; set better syntax highlighting
+  (gud-gdb-colors-mode)
+  ;; protect window
+  (set-window-dedicated-p (selected-window) t))
 
 (global-set-key "\C-z1" 'compile-dir)
 (global-set-key "\C-z2" 'gud-gdb-dir)
