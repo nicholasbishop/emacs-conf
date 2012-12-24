@@ -20,11 +20,8 @@
     ") "
 
     ;; the current major mode for the buffer.
-    " ("
-
-    '(:eval (propertize "%m"
-              'help-echo buffer-file-coding-system))
-    ") "
+    " "
+	'(:eval mode-line-modes)
 
 
     " (" ;; insert vs overwrite mode, input-method in a tooltip
