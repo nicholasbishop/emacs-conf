@@ -129,3 +129,14 @@
 (require 'markdown-mode)
 (setq auto-mode-alist
    (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+;; add hook to image mode that reloads the image when <return> is
+;; pressed
+(defun revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive) (revert-buffer t t))
+(add-hook 'image-mode-hook
+		  (lambda () (local-set-key
+					  (kbd "<return>")
+					  'revert-buffer-no-confirm)))
+
