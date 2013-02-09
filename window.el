@@ -41,3 +41,21 @@
 				  (interactive)
 				  (split-window-right)
 				  (balance-windows)))
+
+;; fix for shell column width after splitting frame
+;; see http://stackoverflow.com/questions/7987494/emacs-shell-mode-display-is-too-wide-after-splitting-window
+(defun comint-fix-window-size ()
+  "Change process window size."
+  (when (derived-mode-p 'comint-mode)
+    ;; by default, ls uses tabs ("for efficiency", according to the
+    ;; GNU docs (wtf?)), and expects them to be eight spaces
+    (set (make-local-variable 'tab-width) 8)
+    (set-process-window-size (get-buffer-process (current-buffer))
+                         (window-height)
+                         (window-width))))
+
+(defun my-shell-mode-hook ()
+  ;; add this hook as buffer local, so it runs once per window.
+  (add-hook 'window-configuration-change-hook 'comint-fix-window-size nil t))
+
+(add-hook 'shell-mode-hook 'my-shell-mode-hook)
