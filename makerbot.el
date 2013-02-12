@@ -18,5 +18,5 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 
 ;; start a shell
-(cd "/d/src/makerbot")
+(cd "/d/makerbot/Toolchain-Release")
 (shell)

@@ -141,14 +141,24 @@
 ;; Comments start with a '*'
 (setq c-block-comment-prefix "*")
 
+(defun make-path-safe-for-c-define (file-name)
+  "Upcase the path, use underscores for dots, hyphens, and slashes"
+  (replace-regexp-in-string "[-\\.\\\\\/]" "_" (upcase file-name)))
+
+(defun c-header-guard-string (file-name use-dir suffix)
+  "Return a C header guard name"
+  (if use-dir
+      (concat (make-path-safe-for-c-define file-name) suffix)
+    (concat (make-path-safe-for-c-define
+             (file-name-nondirectory file-name)) suffix)))
+
 ;; insert header guards
 (defun c-header-guards ()
   (interactive)
   (let ((guard (read-string
                 "Guard: "
-                ;; Default value is based on the filename
-                (replace-regexp-in-string "\\." "_"
-                                          (upcase (buffer-name))))))
+                ;; Default value
+                (c-header-guard-string (buffer-file-name) nil ""))))
     ;; Insert test and define before point
     (insert (concat "#ifndef " guard "\n#define " guard "\n\n")))
   ;; Insert endif after point
