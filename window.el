@@ -50,9 +50,11 @@
     ;; by default, ls uses tabs ("for efficiency", according to the
     ;; GNU docs (wtf?)), and expects them to be eight spaces
     (set (make-local-variable 'tab-width) 8)
-    (set-process-window-size (get-buffer-process (current-buffer))
-                         (window-height)
-                         (window-width))))
+    (let ((proc (get-buffer-process (current-buffer))))
+      (when proc
+	(set-process-window-size proc
+				 (window-height)
+				 (window-width))))))
 
 (defun my-shell-mode-hook ()
   ;; add this hook as buffer local, so it runs once per window.
