@@ -8,10 +8,11 @@
 (global-set-key "\C-zc"
 		'(lambda ()
 		   (interactive)
-		   (save-window-excursion
-		     (select-window
+		   (let ((orig-window (selected-window)))
+			 (select-window
 		      (get-buffer-window "*compilation*"))
-		     (recompile))))
+		     (recompile)
+			 (select-window orig-window))))
 ;; kill compilation key
 (global-set-key "\C-zk" 'kill-compilation)
 
