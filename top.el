@@ -62,9 +62,9 @@
 
 (global-set-key "\C-zl" 'toggle-truncate-lines)
 
-;; start server; could probably be done better
-(server-force-delete)
-(server-start)
+;; start server if not already running
+(unless (boundp 'server-process)
+  (server-start))
 
 ;; mode line
 (load "mode-line")
