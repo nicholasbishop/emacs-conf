@@ -203,8 +203,8 @@
     '(diff-index-face ((t (:inherit bold))))
     '(diff-file-header-face ((t (:inherit bold))))
     '(diff-hunk-header-face ((t (:inherit 'zenburn-highlight-subtle))))
-    '(diff-added-face ((t (:inherit 'zenburn-primary-3))))
-    '(diff-removed-face ((t (:inherit 'zenburn-blue))))
+    `(diff-added-face ((t (:background ,zenburn-green-1))))
+    `(diff-removed-face ((t (:background ,zenburn-red-4))))
     '(diff-context-face ((t (:inherit font-lock-comment))))
     '(diff-refine-change-face ((t (:inherit 'zenburn-background-2))))
 
