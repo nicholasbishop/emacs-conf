@@ -199,7 +199,7 @@
     '(dictionary-word-entry ((t (:inherit font-lock-keyword))))
 
     ;; diff
-    '(diff-header-face ((t (:inherit 'zenburn-highlight-subtle))))
+    `(diff-header-face ((t (:background ,zenburn-bg-1))))
     '(diff-index-face ((t (:inherit bold))))
     '(diff-file-header-face ((t (:inherit bold))))
     '(diff-hunk-header-face ((t (:inherit 'zenburn-highlight-subtle))))
