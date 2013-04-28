@@ -143,3 +143,6 @@
 ;; glsl
 (autoload 'glsl-mode "glsl-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+
+;; enable subword mode in all buffers
+(global-subword-mode t)
