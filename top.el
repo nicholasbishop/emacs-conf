@@ -146,3 +146,6 @@
 
 ;; enable subword mode in all buffers
 (global-subword-mode t)
+
+;; remap M-space to act like "C-c C-d" in CC-Mode)
+(global-set-key (kbd "M-SPC") 'c-hungry-delete-forward)
