@@ -206,3 +206,8 @@
                '(statement-cont . align-enum-class-closing-brace)))
 
 (add-hook 'c++-mode-hook 'fix-enum-class)
+
+(font-lock-add-keywords
+ 'c++-mode
+ '(("final" . font-lock-keyword-face))
+ '(("override" . font-lock-keyword-face)))
