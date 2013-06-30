@@ -149,3 +149,6 @@
 
 ;; remap M-space to act like "C-c C-d" in CC-Mode)
 (global-set-key (kbd "M-SPC") 'c-hungry-delete-forward)
+
+;; Better dynamic-expansion when working with camel-case code
+(setq dabbrev-case-fold-search nil)
