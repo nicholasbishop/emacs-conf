@@ -199,12 +199,12 @@
     '(dictionary-word-entry ((t (:inherit font-lock-keyword))))
 
     ;; diff
-    `(diff-header-face ((t (:background ,zenburn-bg-1))))
+    `(diff-header-face ((t (:foreground ,zenburn-blue))))
     '(diff-index-face ((t (:inherit bold))))
-    '(diff-file-header-face ((t (:inherit bold))))
-    '(diff-hunk-header-face ((t (:inherit 'zenburn-highlight-subtle))))
-    `(diff-added-face ((t (:background ,zenburn-green-1))))
-    `(diff-removed-face ((t (:background ,zenburn-red-4))))
+    `(diff-file-header-face ((t (:foreground ,zenburn-orange))))
+    `(diff-hunk-header-face ((t (:foreground ,zenburn-blue))))
+    `(diff-added-face ((t (:foreground ,zenburn-yellowgreen))))
+    `(diff-removed-face ((t (:foreground ,zenburn-red+1))))
     '(diff-context-face ((t (:inherit font-lock-comment))))
     '(diff-refine-change-face ((t (:inherit 'zenburn-background-2))))
 
