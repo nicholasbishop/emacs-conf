@@ -41,7 +41,9 @@
         "/usr/include"
         "/usr/local/include"
         "/usr/include/c++/4.8"
-        "../*/"))
+        "../*/"
+        "../../src/main/cpp"
+        "../../../include/*/"))
 
 ;; key to switch between header and src
 (global-set-key "\C-zh" 'ff-find-other-file)
