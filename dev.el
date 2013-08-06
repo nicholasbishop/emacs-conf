@@ -219,6 +219,6 @@
 
 (font-lock-add-keywords
  'c++-mode
- '(("final" . font-lock-keyword-face)
-   ("nullptr" . font-lock-keyword-face)
-   ("override" . font-lock-keyword-face)))
+ '(("\\<final\\>" . font-lock-keyword-face)
+   ("\\<nullptr\\>" . font-lock-keyword-face)
+   ("\\<override\\>" . font-lock-keyword-face)))
