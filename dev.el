@@ -179,9 +179,6 @@
 
 (global-set-key "\C-zi" 'c-header-guards)
 
-;; Rust
-(require 'rust-mode)
-
 ;; Namespace insertion
 (defun cxx-insert-namespace ()
   (interactive)
