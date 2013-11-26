@@ -77,6 +77,11 @@
 ;; ;; color of shell output
 (setq ansi-color-names-vector '["black" "red" "green" "yellow" "steel blue" "magenta" "cyan" "white"])
 
+;; Windows development: change default shell to git-bash
+(when (eq system-type 'windows-nt)
+  (setq explicit-shell-file-name "C:\\Program Files (x86)\\Git\\bin\\bash")
+  (setq explicit-sh-args '("-login" "-i")))
+
 ;; development
 (load "dev")
 (load "git")
