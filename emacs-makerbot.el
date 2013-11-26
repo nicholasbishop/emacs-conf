@@ -36,5 +36,7 @@
 (global-set-key "\C-zi" 'makerbot-header-init)
 
 ;; start a shell
-(cd "/d/makerbot")
+(if (eq system-type 'windows-nt)
+    (cd "C:/Toolchain-Release")
+  (cd "/d/makerbot"))
 (shell)
