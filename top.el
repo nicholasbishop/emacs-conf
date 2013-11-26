@@ -98,8 +98,9 @@
 		("\\.cmake\\'" . cmake-mode))
 	      auto-mode-alist))
 
-;; Small font
-(add-to-list 'default-frame-alist '(font . "7x13bold"))
+;; Small font (only on X11)
+(when (eq system-type 'gnu/linux)
+  (add-to-list 'default-frame-alist '(font . "7x13bold")))
 
 ;; Avoid splitting windows when a command wants to show something
 (defun no-split-window ()
