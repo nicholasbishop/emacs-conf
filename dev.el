@@ -220,3 +220,29 @@
    ("\\<final\\>" . font-lock-keyword-face)
    ("\\<nullptr\\>" . font-lock-keyword-face)
    ("\\<override\\>" . font-lock-keyword-face)))
+
+(defun string-strip (str)
+  (replace-regexp-in-string
+   "[ \t]*$" ""
+   (replace-regexp-in-string "^[ \t]*" "" str)))
+
+(defun c-make-switch-cases (text)
+  "text should be body of an enum, outputs corresponding switch case lines"
+  (let ((result ""))
+    (dolist (line (split-string text "\n"))
+      (when (not (string= line ""))
+        (setq result
+              (concat result
+                      "case "
+                      ;; Strip whitespace from ends and trailing comma
+                      (string-strip (replace-regexp-in-string "," "" line))
+                      ":\n"))))
+    result))
+
+(defun c-make-and-insert-switch-cases ()
+  (interactive)
+  (let ((input (car kill-ring)))
+       (insert-before-markers (c-make-switch-cases input))
+  ))
+
+(global-set-key "\C-ze" 'c-make-and-insert-switch-cases)
