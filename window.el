@@ -5,6 +5,9 @@
 (global-set-key (kbd "C-S-k") (lambda () (interactive) (other-window 1)))
 (global-set-key (kbd "C-S-j") (lambda () (interactive) (other-window -1)))
 
+;; frame movement
+(global-set-key "\C-zo" 'other-frame)
+
 ;; protect/unprotect the window from modification
 (global-set-key "\C-z\C-w"
 		(lambda ()
