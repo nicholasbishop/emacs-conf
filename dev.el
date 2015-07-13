@@ -76,9 +76,6 @@
 				  (interactive)
 				  (insert "scripts/startup/bl_ui/")))
 
-;; enable electric-pair-mode
-(electric-pair-mode)
-
 (defun do-in-other-dir (dir action)
   "Run action in dir without blowing away current buffer's directory"
   (let ((old-dir default-directory)
