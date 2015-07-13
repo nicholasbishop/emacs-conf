@@ -157,6 +157,10 @@
 (require 'cc-mode)
 (global-set-key (kbd "M-SPC") 'c-hungry-delete-forward)
 
+;; map C-z C-r to reload the buffer (useful for read-only buffers
+;; where regular insertion doesn't work)
+(global-set-key "\C-z\C-r" 'revert-buffer)
+
 ;; Better dynamic-expansion when working with camel-case code
 (setq dabbrev-case-fold-search nil)
 
