@@ -154,6 +154,7 @@
 (global-subword-mode t)
 
 ;; remap M-space to act like "C-c C-d" in CC-Mode)
+(require 'cc-mode)
 (global-set-key (kbd "M-SPC") 'c-hungry-delete-forward)
 
 ;; Better dynamic-expansion when working with camel-case code
