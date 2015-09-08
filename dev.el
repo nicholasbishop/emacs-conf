@@ -245,7 +245,7 @@
 (global-set-key "\C-ze" 'c-make-and-insert-switch-cases)
 
 ;; Javascript: default to 2-space indent
-(setq js-indent-level 2)
-(setq js-mode-hook
-  '(lambda () (progn
-    (set-variable 'indent-tabs-mode nil))))
+(add-hook 'js-mode-hook
+          (lambda ()
+            (setq js-indent-level 2)
+			(setq indent-tabs-mode nil)))
