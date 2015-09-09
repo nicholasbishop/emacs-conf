@@ -249,3 +249,7 @@
           (lambda ()
             (setq js-indent-level 2)
 			(setq indent-tabs-mode nil)))
+
+;; GYP configuration files are Python
+(add-to-list 'auto-mode-alist '("\\.gyp\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.gypi\\'" . python-mode))
