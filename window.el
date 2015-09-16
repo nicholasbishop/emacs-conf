@@ -64,3 +64,6 @@
   (add-hook 'window-configuration-change-hook 'comint-fix-window-size nil t))
 
 (add-hook 'shell-mode-hook 'my-shell-mode-hook)
+
+;; convenient buffer rename
+(global-set-key (kbd "C-z RET") 'rename-buffer)
