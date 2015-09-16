@@ -131,11 +131,6 @@
   (set-window-dedicated-p (selected-window) t))
 (global-set-key "\C-z3" 'shell-dir)
 
-;; markdown
-(require 'markdown-mode)
-(setq auto-mode-alist
-   (cons '("\\.md" . markdown-mode) auto-mode-alist))
-
 ;; add hook to image mode that reloads the image when <return> is
 ;; pressed
 (defun revert-buffer-no-confirm ()
@@ -149,6 +144,9 @@
 ;; glsl
 (autoload 'glsl-mode "glsl-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+
+;; ebuild
+(add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 
 ;; enable subword mode in all buffers
 (global-subword-mode t)
