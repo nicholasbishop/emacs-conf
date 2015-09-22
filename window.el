@@ -67,3 +67,6 @@
 
 ;; convenient buffer rename
 (global-set-key (kbd "C-z RET") 'rename-buffer)
+
+;; Disable this stupid suspend key
+(global-unset-key (kbd "C-x C-z"))
