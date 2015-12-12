@@ -72,6 +72,5 @@
 (global-unset-key (kbd "C-x C-z"))
 
 ;; The frame closes without warning if using an emacs server, which is
-;; annoying. This disables the close key when in GUI mode.
-(when window-system
-  (global-unset-key (kbd "C-x C-c")))
+;; annoying.
+(global-unset-key (kbd "C-x C-c"))
