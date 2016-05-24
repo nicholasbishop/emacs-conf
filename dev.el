@@ -218,6 +218,12 @@
    ("\\<nullptr\\>" . font-lock-keyword-face)
    ("\\<override\\>" . font-lock-keyword-face)))
 
+;; Python 3.5 coroutine keywords
+(font-lock-add-keywords
+ 'python-mode
+ '(("\\<async\\>" . font-lock-keyword-face)
+   ("\\<await\\>" . font-lock-keyword-face)))
+
 (defun string-strip (str)
   (replace-regexp-in-string
    "[ \t]*$" ""
