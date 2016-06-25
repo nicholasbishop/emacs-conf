@@ -161,14 +161,6 @@
 ;; Better dynamic-expansion when working with camel-case code
 (setq dabbrev-case-fold-search nil)
 
-;; Package lists
-(require 'package)
-(add-to-list
- 'package-archives
- '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-(add-to-list
- 'package-archives
- '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(package-initialize)
+;; Enable additional package sources
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
