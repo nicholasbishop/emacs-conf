@@ -42,9 +42,6 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-(require 'ido)
-(ido-mode t)
-
 ;; Combine C-a and M-m into C-a, change C-S-m to kill *entire* line
 (global-set-key "\C-a"
 				(lambda ()
