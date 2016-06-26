@@ -164,3 +164,6 @@
 ;; Enable additional package sources
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
+
+(require 'icomplete+)
+(icomplete-mode 99)
