@@ -166,4 +166,4 @@
                          ("melpa" . "https://melpa.org/packages/")))
 
 (require 'icomplete+)
-(icomplete-mode 99)
+(icompletep-cycling-mode 99)
