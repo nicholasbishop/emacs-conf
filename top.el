@@ -147,6 +147,10 @@
 ;; ebuild
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 
+;; GYP / GN
+(add-to-list 'auto-mode-alist '("\\.gyp[i]?\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.gn[i]?\\'" . python-mode))
+
 ;; enable subword mode in all buffers
 (global-subword-mode t)
 
