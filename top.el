@@ -171,3 +171,6 @@
 
 (require 'icomplete+)
 (icompletep-cycling-mode 99)
+
+(desktop-save-mode 1)
+(savehist-mode 1)
