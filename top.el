@@ -177,8 +177,8 @@
 	 markdown-mode
 	 dockerfile-mode)))
 
-(require 'icomplete+)
-(icompletep-cycling-mode 99)
+(require 'ido)
+(ido-mode t)
 
 ;; default to Google C++ style
 (require 'google-c-style)
