@@ -177,9 +177,10 @@
 	 markdown-mode
 	 dockerfile-mode)))
 
+(with-eval-after-load "ido-mode"
+  (define-key ido-file-completion-map (kbd "C-w") nil))
 (require 'ido)
 (ido-mode t)
-
 ;; default to Google C++ style
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
