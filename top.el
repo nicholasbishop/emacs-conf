@@ -169,8 +169,20 @@
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
+(package-initialize)
+(package-selected-packages
+   (quote
+	(yaml-mode
+	 rust-mode
+	 markdown-mode
+	 dockerfile-mode)))
+
 (require 'icomplete+)
 (icompletep-cycling-mode 99)
+
+;; default to Google C++ style
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
 
 (desktop-save-mode 1)
 (savehist-mode 1)
