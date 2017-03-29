@@ -175,12 +175,12 @@
 	(yaml-mode
 	 rust-mode
 	 markdown-mode
+	 icomplete+
 	 dockerfile-mode)))
 
-(with-eval-after-load "ido-mode"
-  (define-key ido-file-completion-map (kbd "C-w") nil))
-(require 'ido)
-(ido-mode t)
+(require 'icomplete+)
+(icompletep-cycling-mode 99)
+
 ;; default to Google C++ style
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
