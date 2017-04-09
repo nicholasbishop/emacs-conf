@@ -169,14 +169,16 @@
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
+(require 'package)
 (package-initialize)
-(package-selected-packages
-   (quote
-	(yaml-mode
-	 rust-mode
-	 markdown-mode
-	 icomplete+
-	 dockerfile-mode)))
+(setq package-selected-packages 
+	  (quote
+	   (yaml-mode
+		rust-mode
+		markdown-mode
+		icomplete+
+		dockerfile-mode)))
+(package-install-selected-packages)
 
 (require 'icomplete+)
 (icompletep-cycling-mode 99)
