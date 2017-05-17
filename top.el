@@ -188,4 +188,6 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 
 (desktop-save-mode 1)
+(setq desktop-restore-eager 5)
+
 (savehist-mode 1)
