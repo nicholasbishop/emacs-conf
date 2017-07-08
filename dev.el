@@ -269,3 +269,7 @@
 
 ;; header files (*.h) as C++ by default
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;; default to Google C++ style
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)

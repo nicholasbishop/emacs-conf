@@ -183,10 +183,6 @@
 (require 'icomplete+)
 (icompletep-cycling-mode 99)
 
-;; default to Google C++ style
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-
 (desktop-save-mode 1)
 (setq desktop-restore-eager 5)
 
