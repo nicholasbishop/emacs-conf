@@ -59,7 +59,7 @@
   (push '(block-close . (before)) c-hanging-braces-alist)
   (push '(class-open . (after)) c-hanging-braces-alist)
   (push '(class-close) c-hanging-braces-alist)
-  (c-toggle-auto-newline 1)
+  (c-toggle-auto-newline -1)
 
   ;; don't indent braces that are on their own line (e.g. after
   ;; multi-line if)
