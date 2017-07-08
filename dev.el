@@ -160,19 +160,23 @@
     (concat (make-path-safe-for-c-define
              (file-name-nondirectory file-name)) suffix)))
 
+(setq copyright-owner "Neverware")
+
 ;; insert header guards
 (defun c-header-guards ()
   (interactive)
-  (let ((guard (read-string
-                "Guard: "
-                ;; Default value
-                (c-header-guard-string (buffer-file-name) nil ""))))
-    ;; Insert test and define before point
-    (insert (concat "#ifndef " guard "\n#define " guard "\n\n")))
-  ;; Insert endif after point
-  (let ((pos (point)))
-    (insert "\n\n#endif\n")
-    (goto-char pos)))
+  (let* ((file-name (file-relative-name (buffer-file-name) (git-root-dir)))
+         (guard (c-header-guard-string file-name t "_"))
+         (year (format-time-string "%Y"))
+         (copyright (concat "// Copyright " year " " copyright-owner)))
+    (save-excursion
+      (goto-char (point-min))
+      (insert (concat copyright "\n\n"
+                      "#ifndef " guard "\n"
+                      "#define " guard "\n\n"))
+      (goto-char (point-max))
+      (insert (concat "\n#endif  // " guard "\n"))
+      (goto-char ()))))
 
 (global-set-key "\C-zi" 'c-header-guards)
 
