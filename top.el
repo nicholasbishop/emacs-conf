@@ -94,14 +94,6 @@
 (load "json-mode")
 (setq auto-mode-alist
    (cons '("\\.json" . json-mode) auto-mode-alist))
-;; cmake mode
-(load "cmake-mode")
-(require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-		("\\.cmake\\'" . cmake-mode))
-	      auto-mode-alist))
-
 ;; Small font (only on X11)
 (when (eq system-type 'gnu/linux)
   (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono 11")))
