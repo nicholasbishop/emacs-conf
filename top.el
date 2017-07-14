@@ -177,6 +177,7 @@
 		rust-mode
 		markdown-mode
 		icomplete+
+        qt-pro-mode
 		dockerfile-mode)))
 (package-install-selected-packages)
 

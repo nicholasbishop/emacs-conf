@@ -273,3 +273,6 @@
 ;; default to Google C++ style
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
+
+;; QT's qmake configuration files
+(add-to-list 'auto-mode-alist '("\\.pro\\'" . qt-pro-mode))
