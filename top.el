@@ -175,6 +175,7 @@
 	  (quote
 	   (yaml-mode
 		rust-mode
+        cmake-font-lock
 		markdown-mode
 		icomplete+
         qt-pro-mode
