@@ -44,18 +44,18 @@
 
 ;; Combine C-a and M-m into C-a, change C-S-m to kill *entire* line
 (global-set-key "\C-a"
-				(lambda ()
-				  (interactive)
-				  (let ((curpoint (point)))
-					(back-to-indentation)
-					(if (= curpoint (point))
-						(move-beginning-of-line nil)))))
+                (lambda ()
+                  (interactive)
+                  (let ((curpoint (point)))
+                    (back-to-indentation)
+                    (if (= curpoint (point))
+                        (move-beginning-of-line nil)))))
 
 (global-set-key (kbd "C-S-m")
-				(lambda ()
-				  (interactive)
-				  (move-beginning-of-line nil)
-				  (kill-whole-line)))
+                (lambda ()
+                  (interactive)
+                  (move-beginning-of-line nil)
+                  (kill-whole-line)))
 
 (push '("." . "~/.emacs_backups") backup-directory-alist)
 
@@ -128,9 +128,9 @@
   "Revert buffer without confirmation."
   (interactive) (revert-buffer t t))
 (add-hook 'image-mode-hook
-		  (lambda () (local-set-key
-					  (kbd "<return>")
-					  'revert-buffer-no-confirm)))
+          (lambda () (local-set-key
+                      (kbd "<return>")
+                      'revert-buffer-no-confirm)))
 
 ;; glsl
 (autoload 'glsl-mode "glsl-mode" nil t)
@@ -164,15 +164,15 @@
 (require 'package)
 (package-initialize)
 (setq package-selected-packages 
-	  (quote
-	   (yaml-mode
-		rust-mode
+      (quote
+       (yaml-mode
+        rust-mode
         cmake-font-lock
-		markdown-mode
+        markdown-mode
         meson-mode
-		icomplete+
+        icomplete+
         qt-pro-mode
-		dockerfile-mode)))
+        dockerfile-mode)))
 (package-install-selected-packages)
 
 (require 'icomplete+)
