@@ -169,6 +169,7 @@
 		rust-mode
         cmake-font-lock
 		markdown-mode
+        meson-mode
 		icomplete+
         qt-pro-mode
 		dockerfile-mode)))
