@@ -182,3 +182,9 @@
 (setq desktop-restore-eager 5)
 
 (savehist-mode 1)
+
+(defun web-mode-customization ()
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2))
+(add-hook 'web-mode-hook 'web-mode-customization)
