@@ -132,10 +132,6 @@
                       (kbd "<return>")
                       'revert-buffer-no-confirm)))
 
-;; glsl
-(autoload 'glsl-mode "glsl-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
-
 ;; ebuild
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 
