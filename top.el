@@ -35,8 +35,6 @@
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 
-(global-set-key [f5] 'rgrep)
-
 ;; Enable some disabled commands
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -161,14 +159,15 @@
 (package-initialize)
 (setq package-selected-packages 
       (quote
-       (yaml-mode
-        rust-mode
-        cmake-font-lock
+       (cmake-font-lock
+        dockerfile-mode
+        icomplete+
         markdown-mode
         meson-mode
-        icomplete+
         qt-pro-mode
-        dockerfile-mode)))
+        ripgrep
+        rust-mode
+        yaml-mode)))
 (package-install-selected-packages)
 
 (require 'icomplete+)
@@ -184,3 +183,5 @@
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-css-indent-offset 2))
 (add-hook 'web-mode-hook 'web-mode-customization)
+
+(global-set-key [f5] 'ripgrep-regexp)
