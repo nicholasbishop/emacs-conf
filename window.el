@@ -74,3 +74,5 @@
 ;; The frame closes without warning if using an emacs server, which is
 ;; annoying.
 (global-unset-key (kbd "C-x C-c"))
+
+(setq frame-title-format "𝓗𝓮'𝓼 𝓰𝓸𝓽 𝓼𝓹𝓪𝓬𝓮 𝓭𝓮𝓶𝓮𝓷𝓽𝓲𝓪")
