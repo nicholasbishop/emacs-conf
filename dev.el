@@ -259,7 +259,8 @@
 (setq web-mode-enable-current-element-highlight nil)
 (add-hook 'web-mode-hook
           (lambda ()
-            (setq web-mode-enable-auto-pairing nil)))
+            (setq web-mode-enable-auto-indentation nil)
+            (setq web-mode-enable-auto-quoting nil)))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
 ;; Javascript: default to 2-space indent
