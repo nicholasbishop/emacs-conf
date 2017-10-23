@@ -254,11 +254,24 @@
 
 (global-set-key "\C-ze" 'c-make-and-insert-switch-cases)
 
+
+(require 'web-mode)
+(setq web-mode-enable-current-element-highlight nil)
+(add-hook 'web-mode-hook
+          (lambda ()
+            (setq web-mode-enable-auto-pairing nil)))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
 ;; Javascript: default to 2-space indent
 (add-hook 'js-mode-hook
           (lambda ()
             (setq js-indent-level 2)
 			(setq indent-tabs-mode nil)))
+
+;; Same for Typescript
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (setq typescript-indent-level 2)))
 
 ;; GYP configuration files are Python
 (add-to-list 'auto-mode-alist '("\\.gyp\\'" . python-mode))
