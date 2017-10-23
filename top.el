@@ -167,7 +167,9 @@
         qt-pro-mode
         ripgrep
         rust-mode
-        yaml-mode)))
+        typescript-mode
+        yaml-mode
+        web-mode)))
 (package-install-selected-packages)
 
 (require 'icomplete+)
