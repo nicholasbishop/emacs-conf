@@ -1,3 +1,25 @@
+;; Enable additional package sources
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+
+(require 'package)
+(package-initialize)
+(setq package-selected-packages 
+      (quote
+       (cmake-font-lock
+        dockerfile-mode
+        icomplete+
+        markdown-mode
+        meson-mode
+        qt-pro-mode
+        ripgrep
+        rust-mode
+        typescript-mode
+        yaml-mode
+        web-mode)))
+(package-refresh-contents)
+(package-install-selected-packages)
+
 (global-unset-key "\C-z")
 
 ;; color theme
@@ -150,27 +172,6 @@
 
 ;; Better dynamic-expansion when working with camel-case code
 (setq dabbrev-case-fold-search nil)
-
-;; Enable additional package sources
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
-
-(require 'package)
-(package-initialize)
-(setq package-selected-packages 
-      (quote
-       (cmake-font-lock
-        dockerfile-mode
-        icomplete+
-        markdown-mode
-        meson-mode
-        qt-pro-mode
-        ripgrep
-        rust-mode
-        typescript-mode
-        yaml-mode
-        web-mode)))
-(package-install-selected-packages)
 
 (require 'icomplete+)
 (icompletep-cycling-mode 99)
