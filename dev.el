@@ -70,12 +70,6 @@
   (push '(lambda () 'stop) c-hanging-semi&comma-criteria))
 (add-hook 'c-mode-common-hook 'c-mode-blender-hook)
 
-;; Blender-specific
-(global-set-key "\C-z4"
-				(lambda ()
-				  (interactive)
-				  (insert "scripts/startup/bl_ui/")))
-
 (defun do-in-other-dir (dir action)
   "Run action in dir without blowing away current buffer's directory"
   (let ((old-dir default-directory)
