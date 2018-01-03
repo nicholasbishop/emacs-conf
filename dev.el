@@ -121,31 +121,6 @@
 				   (interactive)
 				   (comment-region (point) (mark) -1)))
 
-;; section header comment in C
-(defun c-section-comment ()
-  (interactive)
-  (let* ((text-len
-		  (- (line-end-position) (line-beginning-position)))
-		 (target-len (- 72 4))
-		 (right-len (/ (- target-len text-len) 2))
-		 (left-len (- target-len text-len right-len)))
-	;; (print text-len)
-	;; (print target-len)
-	;; (print right-len)
-	;; (print left-len)
-	(beginning-of-line)
-	(insert "/")
-	(dotimes (i left-len)
-	  (insert "*"))
-	(insert " ")
-	(end-of-line)
-	(insert " ")
-	(dotimes (i right-len)
-	  (insert "*"))
-	(insert "/")))
-
-(global-set-key "\C-zs" 'c-section-comment)
-
 ;; Comments start with a '*'
 (setq c-block-comment-prefix "*")
 
@@ -290,3 +265,5 @@
 
 ;; QT's qmake configuration files
 (add-to-list 'auto-mode-alist '("\\.pro\\'" . qt-pro-mode))
+
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
