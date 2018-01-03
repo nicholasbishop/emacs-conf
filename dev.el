@@ -51,25 +51,6 @@
 ;; key to load manpage
 (global-set-key "\C-zm" 'man)
 
-;; c-mode hook
-(defun c-mode-blender-hook ()
-  (push '(substatement-open . (after)) c-hanging-braces-alist)
-  (push '(brace-list-open . (after)) c-hanging-braces-alist)
-  (push '(brace-list-close) c-hanging-braces-alist)
-  (push '(block-close . (before)) c-hanging-braces-alist)
-  (push '(class-open . (after)) c-hanging-braces-alist)
-  (push '(class-close) c-hanging-braces-alist)
-  (c-toggle-auto-newline -1)
-
-  ;; don't indent braces that are on their own line (e.g. after
-  ;; multi-line if)
-  (push '(substatement-open . 0) c-offsets-alist)
-  (push '(case-label . +) c-offsets-alist)
-
-  ;; don't insert a newline after semi-colons
-  (push '(lambda () 'stop) c-hanging-semi&comma-criteria))
-(add-hook 'c-mode-common-hook 'c-mode-blender-hook)
-
 (defun do-in-other-dir (dir action)
   "Run action in dir without blowing away current buffer's directory"
   (let ((old-dir default-directory)
@@ -155,47 +136,6 @@
   (insert "namespace " (read-string "Namespace: ")))
 
 (global-set-key "\C-zn" 'cxx-insert-namespace)
-
-;; C++11 fixes from stackoverflow.com/questions/6497374
-(defun inside-class-enum-p (pos)
-  "Checks if POS is within the braces of a C++ \"enum class\"."
-  (ignore-errors
-    (save-excursion
-      (goto-char pos)
-      (up-list -1)
-      (backward-sexp 1)
-      (looking-back "enum[ \t]+class[ \t]+[^}]*"))))
-
-(defun align-enum-class (langelem)
-  (if (inside-class-enum-p (c-langelem-pos langelem))
-      0
-    (c-lineup-topmost-intro-cont langelem)))
-
-(defun align-enum-class-closing-brace (langelem)
-  (if (inside-class-enum-p (c-langelem-pos langelem))
-      '-
-    '+))
-
-(defun fix-enum-class ()
-  "Setup `c++-mode' to better handle \"class enum\"."
-  (add-to-list 'c-offsets-alist '(topmost-intro-cont . align-enum-class))
-  (add-to-list 'c-offsets-alist
-               '(statement-cont . align-enum-class-closing-brace)))
-
-(add-hook 'c++-mode-hook 'fix-enum-class)
-
-(font-lock-add-keywords
- 'c++-mode
- '(("\\<constexpr\\>" . font-lock-keyword-face)
-   ("\\<final\\>" . font-lock-keyword-face)
-   ("\\<nullptr\\>" . font-lock-keyword-face)
-   ("\\<override\\>" . font-lock-keyword-face)))
-
-;; Python 3.5 coroutine keywords
-(font-lock-add-keywords
- 'python-mode
- '(("\\<async\\>" . font-lock-keyword-face)
-   ("\\<await\\>" . font-lock-keyword-face)))
 
 (defun string-strip (str)
   (replace-regexp-in-string
