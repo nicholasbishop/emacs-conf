@@ -17,7 +17,6 @@
         typescript-mode
         yaml-mode
         web-mode)))
-(package-refresh-contents)
 (package-install-selected-packages)
 
 (global-unset-key "\C-z")
