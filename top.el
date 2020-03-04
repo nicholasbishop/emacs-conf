@@ -8,6 +8,7 @@
       (quote
        (cmake-font-lock
         dockerfile-mode
+        gn-mode
         icomplete+
         markdown-mode
         meson-mode
@@ -153,9 +154,6 @@
 
 ;; ebuild
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
-
-;; GN
-(add-to-list 'auto-mode-alist '("\\.gn[i]?\\'" . python-mode))
 
 ;; enable subword mode in all buffers
 (global-subword-mode t)
