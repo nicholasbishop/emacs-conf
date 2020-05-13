@@ -153,8 +153,9 @@
                       (kbd "<return>")
                       'revert-buffer-no-confirm)))
 
-;; ebuild
+;; ebuild/eclass
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
+(add-to-list 'auto-mode-alist '("\\.eclass\\'" . sh-mode))
 
 ;; enable subword mode in all buffers
 (global-subword-mode t)
