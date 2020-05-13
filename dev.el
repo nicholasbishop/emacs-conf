@@ -177,10 +177,6 @@
           (lambda ()
             (setq typescript-indent-level 2)))
 
-;; GYP configuration files are Python
-(add-to-list 'auto-mode-alist '("\\.gyp\\'" . python-mode))
-(add-to-list 'auto-mode-alist '("\\.gypi\\'" . python-mode))
-
 ;; don't use tabs
 (setq-default indent-tabs-mode nil)
 
