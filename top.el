@@ -10,6 +10,7 @@
         dockerfile-mode
         gn-mode
         icomplete+
+        gn-mode
         markdown-mode
         meson-mode
         qt-pro-mode
