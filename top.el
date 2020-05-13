@@ -157,6 +157,9 @@
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.eclass\\'" . sh-mode))
 
+;; GN
+(add-to-list 'auto-mode-alist '("\\.gn[i]?\\'" . gn-mode))
+
 ;; enable subword mode in all buffers
 (global-subword-mode t)
 
