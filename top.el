@@ -189,3 +189,6 @@
 (add-hook 'web-mode-hook 'web-mode-customization)
 
 (global-set-key [f5] 'ripgrep-regexp)
+
+;; Prevent warning about discarding big buffers
+(add-to-list 'warning-suppress-types '(undo discard-info))
