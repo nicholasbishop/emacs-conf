@@ -40,7 +40,10 @@
  '(tab-width 4)
  '(inhibit-startup-screen t)
  '(save-place t nil (saveplace))
- '(show-paren-mode t))
+ '(show-paren-mode t)
+ ;; Prevent warning about discarding big buffers
+ '(warning-suppress-types (quote ((undo discard-info)))))
+
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -189,6 +192,3 @@
 (add-hook 'web-mode-hook 'web-mode-customization)
 
 (global-set-key [f5] 'ripgrep-regexp)
-
-;; Prevent warning about discarding big buffers
-(add-to-list 'warning-suppress-types '(undo discard-info))
