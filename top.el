@@ -23,6 +23,13 @@
 
 (global-unset-key "\C-z")
 
+;; Something changed in emacs 27 with themes, this seems to be needed
+;; to get my custom theme to work. Got this from
+;; https://emacs.stackexchange.com/questions/48365, but it's not clear
+;; what the background is on what changed and how to properly fix this
+;; going forward.
+(setq custom--inhibit-theme-enable nil)
+
 ;; color theme
 (load "theme")
 
