@@ -21,7 +21,7 @@
 ;; Heavily modified/screwed up by Nicholas Bishop
 
 (deftheme zenburn
-  "The Zenburn theme.")
+  "The Bishop theme.")
 
 (let ( (zenburn-fg		"#dcdccc")
        (zenburn-bg-1		"#2b2b2b")
