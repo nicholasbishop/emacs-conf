@@ -3,7 +3,6 @@
                          ("melpa" . "https://melpa.org/packages/")))
 
 (require 'package)
-(package-initialize)
 (setq package-selected-packages 
       (quote
        (cmake-font-lock
