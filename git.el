@@ -57,8 +57,8 @@
 			;; output log
 			(message (shell-command-to-string
 					  (concat "git log -1 " commit-hash)))
-			;; copy commit hash to kill ring (and truncate for brevity)
-			(kill-new (substring commit-hash 0 7))))
+			;; copy commit hash to kill ring
+			(kill-new commit-hash)))
 	  (message "Current line has not been committed"))))
 
 (defun git-rebase-interactive ()
