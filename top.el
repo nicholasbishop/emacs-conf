@@ -7,6 +7,7 @@
       (quote
        (cmake-font-lock
         dockerfile-mode
+        fd-dired
         gn-mode
         icomplete+
         gn-mode
