@@ -139,7 +139,7 @@
 (global-set-key "\C-c\C-j" 'grep-git-root)
 (global-set-key "\C-cj" 'grep-git-root)
 
-(defun open-search-git-root ()
+(defun fd-git-root ()
   (interactive)
   (let* ((filename (read-from-minibuffer "Filename: " ""))
 		 (pattern (shell-quote-argument filename)))
@@ -163,5 +163,5 @@
        (t
 		(fd-dired dir pattern))))))
 
-(global-set-key "\C-c\C-f" 'open-search-git-root)
-(global-set-key "\C-cf" 'open-search-git-root)
+(global-set-key "\C-c\C-f" 'fd-git-root)
+(global-set-key "\C-cf" 'fd-git-root)
