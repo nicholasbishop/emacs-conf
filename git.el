@@ -141,26 +141,31 @@
 
 (defvar open-search-git-history "") ;; TODO
 
-;; TODO: at least clean up the ignore directory stuff (cmake-* and obj)
 (defun open-search-git-root ()
   (interactive)
   (let* ((filename (read-from-minibuffer "Filename: " ""))
 		 (pattern (shell-quote-argument filename)))
 	
-	;; should be some conditional?
-	
-	(setq open-search-git-filename filename)
-
 	(let* ((dir (git-root-dir))
-		   (find-str (concat "find " dir " -name 'obj' -prune , -iname '" pattern "'"))
-		   (num-match (shell-command-to-string (concat find-str " | wc -l"))))
-	  (if (string= num-match "1\n")
-		  ;; only one match, load it
-		  (find-file (substring (shell-command-to-string find-str) 0 -1))
-		;; multiple matches, pass off to find-dired
+		   (at-most-two-matches-raw
+            ;; Run fd to get at most two matching paths. The idea is
+            ;; that if there is exactly one match we should open that
+            ;; file directly, but if there are two or more we should
+            ;; use dired to allow the user to pick.
+            (shell-command-to-string
+             (concat "fd --max-results=2 " pattern " " dir)))
+           (at-most-two-matches (split-string at-most-two-matches-raw "\n" t))
+           (num-match (length at-most-two-matches)))
+      (cond
+       ;; no matches, display an error
+       ((= num-match 0) (message "no matches"))
+       ;; only one match, load it
+       ((= num-match 1) (find-file (car at-most-two-matches)))
+       ;; multiple matches, pass off to find-dired
+       (t
 		(find-dired dir
 					(concat " -iname 'cmake-*' -prune , -name 'obj' -prune , -iname "
-                            pattern))))))
+                            pattern)))))))
 
 (global-set-key "\C-c\C-f" 'open-search-git-root)
 (global-set-key "\C-cf" 'open-search-git-root)
