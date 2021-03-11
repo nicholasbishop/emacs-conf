@@ -112,94 +112,29 @@
 (setq grep-find-ignored-directories (cons "cmake-*" grep-find-ignored-directories))
 (setq grep-find-ignored-directories (cons "obj" grep-find-ignored-directories))
 
-;; This stinks, but no idea how to do this otherwise; it's a direct
-;; copy-paste of rgrep, but uses git-root-dir rather than
-;; read-directory-name for getting the base directory
-(defun grep-git-root (regexp &optional files dir confirm)
+;; This is annoying copy paste, but no idea how to do this otherwise;
+;; it's a direct copy-paste of ripgrep-regexp, but uses git-root-dir
+;; rather than read-directory-name for getting the base directory.
+(defun grep-git-root (regexp directory &optional args)
+  "Run a ripgrep search with `REGEXP' at the root of the git repo.
+`ARGS' provides Ripgrep command line arguments."
   (interactive
-   (progn
-     (grep-compute-defaults)
-     (cond
-      ((and grep-find-command (equal current-prefix-arg '(16)))
-       (list (read-from-minibuffer "Run: " grep-find-command
-				   nil nil 'grep-find-history)))
-      ((not grep-find-template)
-       (error "grep.el: No `grep-find-template' available"))
-      (t (let* ((regexp (grep-read-regexp))
-		(files (grep-read-files regexp))
-		(dir (git-root-dir))
-		(confirm (equal current-prefix-arg '(4))))
-	   (list regexp files dir confirm))))))
-  (when (and (stringp regexp) (> (length regexp) 0))
-    (unless (and dir (file-directory-p dir) (file-readable-p dir))
-      (setq dir default-directory))
-    (if (null files)
-	(if (not (string= regexp (if (consp grep-find-command)
-				     (car grep-find-command)
-				   grep-find-command)))
-	    (compilation-start regexp 'grep-mode))
-      (setq dir (file-name-as-directory (expand-file-name dir)))
-      (require 'find-dired)		; for `find-name-arg'
-      (let ((command (grep-expand-template
-		      grep-find-template
-		      regexp
-		      (concat (shell-quote-argument "(")
-			      " " find-name-arg " "
-			      (mapconcat #'shell-quote-argument
-					 (split-string files)
-					 (concat " -o " find-name-arg " "))
-			      " "
-			      (shell-quote-argument ")"))
-		      dir
-		      (concat
-		       (and grep-find-ignored-directories
-			    (concat "-type d "
-				    (shell-quote-argument "(")
-				    ;; we should use shell-quote-argument here
-				    " -path "
-				    (mapconcat
-				     #'(lambda (ignore)
-					 (cond ((stringp ignore)
-						(shell-quote-argument
-						 (concat "*/" ignore)))
-					       ((consp ignore)
-						(and (funcall (car ignore) dir)
-						     (shell-quote-argument
-						      (concat "*/"
-							      (cdr ignore)))))))
-				     grep-find-ignored-directories
-				     " -o -path ")
-				    " "
-				    (shell-quote-argument ")")
-				    " -prune -o "))
-		       (and grep-find-ignored-files
-			    (concat (shell-quote-argument "(")
-				    ;; we should use shell-quote-argument here
-				    " -name "
-				    (mapconcat
-				     #'(lambda (ignore)
-					 (cond ((stringp ignore)
-						(shell-quote-argument ignore))
-					       ((consp ignore)
-						(and (funcall (car ignore) dir)
-						     (shell-quote-argument
-						      (cdr ignore))))))
-				     grep-find-ignored-files
-				     " -o -name ")
-				    " "
-				    (shell-quote-argument ")")
-				    " -prune -o "))))))
-	(when command
-	  (if confirm
-	      (setq command
-		    (read-from-minibuffer "Confirm: "
-					  command nil nil 'grep-find-history))
-	    (add-to-history 'grep-find-history command))
-	  (let ((default-directory dir))
-	    (compilation-start command 'grep-mode))
-	  ;; Set default-directory if we started rgrep in the *grep* buffer.
-	  (if (eq next-error-last-buffer (current-buffer))
-	      (setq default-directory dir)))))))
+   (list (read-from-minibuffer "Ripgrep search for: " (thing-at-point 'symbol))
+         (git-root-dir)))
+  (let ((default-directory directory))
+    (compilation-start
+     (mapconcat 'identity
+                (append (list ripgrep-executable)
+                        ripgrep-arguments
+                        args
+                        ripgrep--base-arguments
+                        (when ripgrep-highlight-search '("--color=always"))
+                        (when (and case-fold-search
+                                   (isearch-no-upper-case-p regexp t))
+                          '("--ignore-case"))
+                        '("--")
+                        (list (shell-quote-argument regexp) ".")) " ")
+     'ripgrep-search-mode)))
 
 (global-set-key "\C-c\C-j" 'grep-git-root)
 (global-set-key "\C-cj" 'grep-git-root)
