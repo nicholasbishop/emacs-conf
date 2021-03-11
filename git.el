@@ -79,7 +79,16 @@
 (defun git-buffer-filename ()
   "Add buffer's file path relative to git root to the kill ring"
   (interactive)
-  (let ((path (file-relative-name (buffer-file-name) (git-root-dir))))
+  (let ((path (file-relative-name
+               ;; buffer-filename returns an absolute path but not
+               ;; necessarily a canonical path in that symlinks are
+               ;; not resolved, whereas git-root-dir does implicitly
+               ;; resolve symlinks because that's the behavior of `git
+               ;; rev-parse --show-toplevel`. To make
+               ;; file-relative-name work as expected, call
+               ;; file-truename on the buffer name to canonicalize it.
+               (file-truename (buffer-file-name))
+               (git-root-dir))))
 	(message path)
 	(kill-new path)))
 (global-set-key "\C-zf" 'git-buffer-filename)
