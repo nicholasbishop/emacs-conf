@@ -12,6 +12,7 @@
         gn-mode
         markdown-mode
         meson-mode
+        ripgrep
         qt-pro-mode
         ripgrep
         rust-mode
