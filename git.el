@@ -163,9 +163,7 @@
        ((= num-match 1) (find-file (car at-most-two-matches)))
        ;; multiple matches, pass off to find-dired
        (t
-		(find-dired dir
-					(concat " -iname 'cmake-*' -prune , -name 'obj' -prune , -iname "
-                            pattern)))))))
+		(fd-dired dir pattern))))))
 
 (global-set-key "\C-c\C-f" 'open-search-git-root)
 (global-set-key "\C-cf" 'open-search-git-root)
