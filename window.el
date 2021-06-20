@@ -75,4 +75,14 @@
 ;; annoying.
 (global-unset-key (kbd "C-x C-c"))
 
+;; From https://stackoverflow.com/questions/4716855
+;; never shrink windows
+(defvar allow-window-shrinking nil
+  "If non-nil, effectively disable shrinking windows by making `shrink-window-if-larger-than-buffer' a no-op.")
+(advice-add 'shrink-window-if-larger-than-buffer
+            :before-while
+            (lambda (&rest args)
+              "Do nothing if `allow-window-shrinking' is nil."
+              allow-window-shrinking))
+
 (setq frame-title-format "𝓗𝓮'𝓼 𝓰𝓸𝓽 𝓼𝓹𝓪𝓬𝓮 𝓭𝓮𝓶𝓮𝓷𝓽𝓲𝓪")
