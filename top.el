@@ -24,6 +24,8 @@
 
 (global-unset-key "\C-z")
 
+(load "skeletons")
+
 ;; color theme
 (load "theme")
 (enable-theme 'zenburn)
