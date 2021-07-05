@@ -197,3 +197,5 @@
 (add-hook 'web-mode-hook 'web-mode-customization)
 
 (global-set-key [f5] 'ripgrep-regexp)
+
+(setq-default fill-column 79)
