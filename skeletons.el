@@ -10,6 +10,15 @@ if __name__ == \"__main__\":
     main()
 "))
 
+(defun skel-py-run ()
+  (interactive)
+  (insert "import subprocess
+
+def run(*cmd):
+    print(' '.join(cmd))
+    subprocess.run(cmd, check=True)
+"))
+
 (defun skel-rust-tests()
   (interactive)
   (insert "#[cfg(test)]
