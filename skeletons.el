@@ -14,9 +14,11 @@ if __name__ == \"__main__\":
   (interactive)
   (insert "#[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+    fn test_asdf() {
+        todo!();
     }
 }
 "))
