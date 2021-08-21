@@ -198,4 +198,4 @@
 
 (global-set-key [f5] 'ripgrep-regexp)
 
-(setq-default fill-column 79)
+(setq-default fill-column 72)
