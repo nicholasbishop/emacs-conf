@@ -119,10 +119,6 @@
 (compilation-always-kill-mode 1)
 ;; TeX
 (load "tex")
-;; json mode
-(load "json-mode")
-(setq auto-mode-alist
-   (cons '("\\.json" . json-mode) auto-mode-alist))
 ;; Small font (only on X11)
 (when (eq system-type 'gnu/linux)
   (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono 11")))

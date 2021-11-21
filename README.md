@@ -98,11 +98,6 @@ Adds a command `gud-gdb-colors-mode` which gives gud-gdb nicer
 syntax highlighting. Function names and line numbers in the
 backtrace format will be highlighted.
 
-### JSON (json-mode.el)
-Includes `json-mode.el` for nicer editing and syntax highlighting
-of JSon files. (Not sure who original author is, not sure what the
-license is either.)
-
 ### TeX (tex.el)
 Modifies the `latex-run-command` to output PDF rather than DVI,
 modifies the `tex-dvi-view-command` to run Evince rather than
