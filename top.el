@@ -3,6 +3,11 @@
                          ("melpa" . "https://melpa.org/packages/")))
 
 (require 'package)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
 (setq package-selected-packages 
       (quote
        (cmake-font-lock
@@ -121,7 +126,7 @@
 (load "tex")
 ;; Small font (only on X11)
 (when (eq system-type 'gnu/linux)
-  (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono 11")))
+  (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono 12")))
 
 ;; Avoid splitting windows when a command wants to show something
 (defun no-split-window ()
