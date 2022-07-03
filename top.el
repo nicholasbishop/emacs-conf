@@ -86,7 +86,12 @@
                   (move-beginning-of-line nil)
                   (kill-whole-line)))
 
-(push '("." . "~/.emacs_backups") backup-directory-alist)
+;; Stop emacs from spamming temporary files all over the place.
+(setq backup-directory-alist `((".*" . "~/.emacs_backups")))
+(setq auto-save-file-name-transforms `((".*" "~/.emacs_backups" t)))
+; TODO: starging in v28 can use this instead:
+; (push '("." . "~/.emacs_backups") lock-file-name-transforms)
+(setq create-lockfiles nil)
 
 (global-set-key "\C-zl" 'toggle-truncate-lines)
 
