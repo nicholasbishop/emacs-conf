@@ -109,7 +109,7 @@
 ;; insert header guards
 (defun c-header-guards ()
   (interactive)
-  (let* ((file-name (file-relative-name (buffer-file-name) (git-root-dir)))
+  (let* ((file-name (file-relative-name (file-truename (buffer-file-name)) (git-root-dir)))
          (guard (c-header-guard-string file-name t "_"))
          (year (format-time-string "%Y"))
          (copyright (concat "// Copyright " year " " copyright-owner)))
