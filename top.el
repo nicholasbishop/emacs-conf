@@ -208,3 +208,6 @@
 (global-set-key [f5] 'ripgrep-regexp)
 
 (setq-default fill-column 72)
+
+;; Don't ignore any extensions. I like to open all kindsa files :)
+(setq completion-ignored-extensions ())
