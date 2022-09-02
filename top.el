@@ -166,6 +166,14 @@
 (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.eclass\\'" . sh-mode))
 
+(defun maybe-use-ebuild-settings ()
+  (when (and (buffer-file-name)
+             (equal (file-name-extension (buffer-file-name)) "ebuild"))
+    (setq indent-tabs-mode t)
+    (setq sh-basic-offset 8)
+    (setq tab-width 8)))
+(add-hook 'sh-mode-hook 'maybe-use-ebuild-settings)
+
 ;; GN
 (add-to-list 'auto-mode-alist '("\\.gn[i]?\\'" . gn-mode))
 
