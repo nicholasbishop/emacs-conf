@@ -211,3 +211,8 @@
 
 ;; Don't ignore any extensions. I like to open all kindsa files :)
 (setq completion-ignored-extensions ())
+
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
