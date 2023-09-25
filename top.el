@@ -177,6 +177,9 @@
 ;; GN
 (add-to-list 'auto-mode-alist '("\\.gn[i]?\\'" . gn-mode))
 
+;; Star
+(add-to-list 'auto-mode-alist '("\\.star\\'" . python-mode))
+
 ;; enable subword mode in all buffers
 (global-subword-mode t)
 
