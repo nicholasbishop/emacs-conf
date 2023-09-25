@@ -1,8 +1,7 @@
-;; Enable additional package sources
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
-
 (require 'package)
+;; Enable additional package sources
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 (setq package-selected-packages 
       (quote
        (cmake-font-lock
