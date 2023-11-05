@@ -8,17 +8,18 @@
         dockerfile-mode
         fd-dired
         gn-mode
-        icomplete+
         gn-mode
+        icomplete+
         markdown-mode
         meson-mode
-        ripgrep
         qt-pro-mode
+        ripgrep
         ripgrep
         rust-mode
         typescript-mode
-        yaml-mode
-        web-mode)))
+        use-package
+        web-mode
+        yaml-mode)))
 (package-install-selected-packages)
 
 (global-unset-key "\C-z")
