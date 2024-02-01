@@ -104,7 +104,7 @@
     (concat (make-path-safe-for-c-define
              (file-name-nondirectory file-name)) suffix)))
 
-(setq copyright-owner "Neverware")
+(setq copyright-owner "The ChromiumOS Authors\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.")
 
 ;; insert header guards
 (defun c-header-guards ()
