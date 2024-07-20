@@ -203,7 +203,7 @@
 ;;
 ;; Possibly there's some alternative that involves the poorly-documented
 ;; display-buffer-alist, or with advice, but honestly who has the time.
-(defun compilation-goto-locus (msg mk end-mk)
+(defun compilation-goto-locus-override (msg mk end-mk)
   "Jump to an error corresponding to MSG at MK.
 All arguments are markers.  If END-MK is non-nil, mark is set there
 and overlay is highlighted between MK and END-MK."
@@ -290,3 +290,5 @@ and overlay is highlighted between MK and END-MK."
       ;; We want a fringe arrow (instead of highlighting).
       (setq next-error-overlay-arrow-position
 	    (copy-marker (line-beginning-position))))))
+
+(advice-add 'compilation-goto-locus :override 'compilation-goto-locus-override)
