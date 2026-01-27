@@ -130,6 +130,12 @@
     `(scroll-bar ((t (:background ,zenburn-bg+2))))
     `(secondary-selection ((t (:foreground nil :background ,zenburn-bg+2))))
     `(tool-bar ((t (:background ,zenburn-bg+2))))
+
+    ;; shell
+    `(ansi-color-bright-blue ((t (:foreground ,zenburn-blue))))
+    `(ansi-color-bright-black ((t (:foreground ,zenburn-tan))))
+    `(ansi-color-green ((t (:foreground ,zenburn-green))))
+    `(ansi-color-magenta ((t (:foreground ,zenburn-purple))))
     
     ;; apt-utils
     '(apt-utils-normal-package ((t (:inherit 'zenburn-primary-1))))
