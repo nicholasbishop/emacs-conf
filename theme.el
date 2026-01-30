@@ -132,6 +132,7 @@
     `(tool-bar ((t (:background ,zenburn-bg+2))))
 
     ;; shell
+    `(ansi-color-blue ((t (:foreground ,zenburn-blue-1))))
     `(ansi-color-bright-blue ((t (:foreground ,zenburn-blue))))
     `(ansi-color-bright-black ((t (:foreground ,zenburn-tan))))
     `(ansi-color-green ((t (:foreground ,zenburn-green))))
