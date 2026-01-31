@@ -8,12 +8,9 @@
         dockerfile-mode
         fd-dired
         gn-mode
-        gn-mode
         icomplete+
         markdown-mode
         meson-mode
-        qt-pro-mode
-        ripgrep
         ripgrep
         rust-mode
         typescript-mode
