@@ -10,9 +10,11 @@ env:
   RUSTFLAGS: -Dwarnings
 
 jobs:
-  check:
+  rust:
     runs-on: ubuntu-latest
-    working-directory: jjb
+    defaults:
+      run: 
+        working-directory: jjb
     steps:
       - uses: actions/checkout@v6
       - uses: Swatinem/rust-cache@v2
