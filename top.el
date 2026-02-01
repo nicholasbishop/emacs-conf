@@ -15,6 +15,7 @@
         rust-mode
         typescript-mode
         use-package
+        vc-jj
         web-mode
         yaml-mode)))
 (package-install-selected-packages)
