@@ -21,6 +21,31 @@
 	  ;; copy commit hash to kill ring
 	  (kill-new rev))))
 
+(defun jj-diff ()
+
+  (interactive)
+
+  (let ((bufname "*jj-diff*")
+        (diff (shell-command-to-string (concat "jj diff --git " (buffer-file-name)))))
+    (progn
+      ;; Delete the buffer if it already exists.
+      (condition-case nil
+          (kill-buffer bufname)
+        (error nil))
+
+      ;; Create the buffer and fill it.
+      (set-buffer (get-buffer-create bufname))
+      (insert diff)
+      (diff-mode)
+      (read-only-mode)
+
+      ;; Show the buffer.
+      (display-buffer bufname))))
+      
 (global-unset-key "\C-j")
+
 (global-set-key "\C-jl" 'jj-print-line-log)
 (global-set-key "\C-j\C-l" 'jj-print-line-log)
+
+(global-set-key "\C-jd" 'jj-diff)
+(global-set-key "\C-j\C-d" 'jj-diff)
