@@ -61,6 +61,30 @@
                (jj-root))))
 	(message path)
 	(kill-new path)))
+
+(defun jj-open ()
+  (interactive)
+  (let* ((filename (read-from-minibuffer "Filename: " ""))
+		 (pattern (shell-quote-argument filename)))
+	
+	(let* ((dir (jj-root))
+		   (at-most-two-matches-raw
+            ;; Run fd to get at most two matching paths. The idea is
+            ;; that if there is exactly one match we should open that
+            ;; file directly, but if there are two or more we should
+            ;; use dired to allow the user to pick.
+            (shell-command-to-string
+             (concat "fd --max-results=2 " pattern " " dir)))
+           (at-most-two-matches (split-string at-most-two-matches-raw "\n" t))
+           (num-match (length at-most-two-matches)))
+      (cond
+       ;; no matches, display an error
+       ((= num-match 0) (message "no matches"))
+       ;; only one match, load it
+       ((= num-match 1) (find-file (car at-most-two-matches)))
+       ;; multiple matches, pass off to find-dired
+       (t
+		(fd-dired dir pattern))))))
       
 (global-unset-key "\C-j")
 
@@ -72,3 +96,6 @@
 
 (global-set-key "\C-jf" 'jj-buffer-path)
 (global-set-key "\C-j\C-f" 'jj-buffer-path)
+
+(global-set-key "\C-jo" 'jj-open)
+(global-set-key "\C-j\C-o" 'jj-open)
