@@ -89,6 +89,16 @@
        ;; multiple matches, pass off to find-dired
        (t
 		(fd-dired dir pattern))))))
+
+(defun jj-github ()
+  "Open a file in the repo on github."
+  (interactive)
+  (browse-url (shell-command-to-string 
+               (concat
+                "jjb file-url "
+	            (jj-buffer-path)
+                " "
+                (number-to-string (line-number-at-pos))))))
       
 (global-unset-key "\C-j")
 
@@ -103,3 +113,6 @@
 
 (global-set-key "\C-jo" 'jj-open)
 (global-set-key "\C-j\C-o" 'jj-open)
+
+(global-set-key "\C-jg" 'jj-github)
+(global-set-key "\C-j\C-g" 'jj-github)
