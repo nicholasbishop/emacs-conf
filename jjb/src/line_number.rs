@@ -1,4 +1,5 @@
 use anyhow::{Context, Result, bail};
+use std::fmt::{self, Display, Formatter};
 
 #[derive(Clone, Copy)]
 pub struct LineNumber(usize);
@@ -23,5 +24,11 @@ impl LineNumber {
         lines
             .nth(self.index_from_zero())
             .context("invalid line number")
+    }
+}
+
+impl Display for LineNumber {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), fmt::Error> {
+        write!(f, "{}", self.index_from_zero() + 1)
     }
 }
