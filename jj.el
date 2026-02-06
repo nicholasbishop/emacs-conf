@@ -47,18 +47,22 @@
   (substring (shell-command-to-string "jj root") 0 -1))
 
 (defun jj-buffer-path ()
-  "Add buffer's file path relative to git root to the kill ring"
+  "Get buffer's file path relative to the jj repo root."
+  (file-relative-name
+   ;; buffer-filename returns an absolute path but not
+   ;; necessarily a canonical path in that symlinks are
+   ;; not resolved, whereas git-root-dir does implicitly
+   ;; resolve symlinks because that's the behavior of `git
+   ;; rev-parse --show-toplevel`. To make
+   ;; file-relative-name work as expected, call
+   ;; file-truename on the buffer name to canonicalize it.
+   (file-truename (buffer-file-name))
+   (jj-root)))
+
+(defun jj-copy-buffer-path ()
+  "Add buffer's file path relative to the jj root to the kill ring."
   (interactive)
-  (let ((path (file-relative-name
-               ;; buffer-filename returns an absolute path but not
-               ;; necessarily a canonical path in that symlinks are
-               ;; not resolved, whereas git-root-dir does implicitly
-               ;; resolve symlinks because that's the behavior of `git
-               ;; rev-parse --show-toplevel`. To make
-               ;; file-relative-name work as expected, call
-               ;; file-truename on the buffer name to canonicalize it.
-               (file-truename (buffer-file-name))
-               (jj-root))))
+  (let ((path (jj-buffer-path)))
 	(message path)
 	(kill-new path)))
 
@@ -94,8 +98,8 @@
 (global-set-key "\C-jd" 'jj-diff)
 (global-set-key "\C-j\C-d" 'jj-diff)
 
-(global-set-key "\C-jf" 'jj-buffer-path)
-(global-set-key "\C-j\C-f" 'jj-buffer-path)
+(global-set-key "\C-jf" 'jj-copy-buffer-path)
+(global-set-key "\C-j\C-f" 'jj-copy-buffer-path)
 
 (global-set-key "\C-jo" 'jj-open)
 (global-set-key "\C-j\C-o" 'jj-open)
