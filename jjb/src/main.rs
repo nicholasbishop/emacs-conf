@@ -1,5 +1,6 @@
 mod blame_line;
 mod cache;
+mod file_url;
 mod line_number;
 mod util;
 
@@ -17,7 +18,15 @@ struct Args {
 
 #[derive(Subcommand)]
 enum Action {
-    BlameLine { path: PathBuf, line: usize },
+    BlameLine {
+        path: PathBuf,
+        line: usize,
+    },
+    FileUrl {
+        /// Path relative to the root of the repository.
+        path: PathBuf,
+        line: usize,
+    },
 }
 
 fn main() -> Result<()> {
@@ -28,6 +37,11 @@ fn main() -> Result<()> {
     match &args.action {
         Action::BlameLine { path, line } => {
             blame_line::blame_line(&cache, path, LineNumber::new(*line)?)
+        }
+        Action::FileUrl { path, line } => {
+            let url = file_url::file_url(path, LineNumber::new(*line)?)?;
+            println!("{url}");
+            Ok(())
         }
     }
 }
