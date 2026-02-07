@@ -22,7 +22,7 @@
 	  (kill-new rev))))
 
 (defun jj-diff ()
-
+  "Get a diff of the current buffer and show it in a new buffer."
   (interactive)
 
   (let ((bufname "*jj-diff*")
@@ -40,7 +40,7 @@
       (read-only-mode)
 
       ;; Show the buffer.
-      (display-buffer bufname))))
+      (pop-to-buffer bufname))))
 
 (defun jj-root ()
   "Search upwards from cwd for jj root."
