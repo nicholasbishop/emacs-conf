@@ -2,9 +2,25 @@ use anyhow::{Context, Result, bail};
 use std::path::Path;
 use std::process::Command;
 
+fn cmd_str(cmd: &Command) -> String {
+    format!("`{cmd:?}`").replace('\"', "")
+}
+
+/// Run a `Command`.
+pub fn run_cmd(cmd: &mut Command) -> Result<()> {
+    let cmd_str = cmd_str(cmd);
+    let status = cmd
+        .status()
+        .context(format!("failed to launch {cmd_str}"))?;
+    if !status.success() {
+        bail!("failed to run {cmd_str}: {status:?}");
+    }
+    Ok(())
+}
+
 /// Run a `Command` and capture its stdout as a string.
 pub fn get_stdout(cmd: &mut Command) -> Result<String> {
-    let cmd_str = format!("`{cmd:?}`").replace('\"', "");
+    let cmd_str = cmd_str(cmd);
     let output = cmd
         .output()
         .context(format!("failed to launch {cmd_str}"))?;

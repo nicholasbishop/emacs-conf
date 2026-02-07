@@ -9,6 +9,7 @@ use cache::Cache;
 use clap::{Parser, Subcommand};
 use line_number::LineNumber;
 use std::path::PathBuf;
+use std::process::Command;
 
 #[derive(Parser)]
 struct Args {
@@ -27,6 +28,12 @@ enum Action {
         path: PathBuf,
         line: usize,
     },
+
+    /// Print the log for a single branch.
+    Stack {
+        #[arg(default_value = "@")]
+        rev: String,
+    },
 }
 
 fn main() -> Result<()> {
@@ -43,5 +50,10 @@ fn main() -> Result<()> {
             println!("{url}");
             Ok(())
         }
+        Action::Stack { rev } => util::run_cmd(Command::new("jj").args([
+            "log",
+            "-r",
+            &format!("ancestors(reachable({rev}, mutable()), 2)"),
+        ])),
     }
 }
