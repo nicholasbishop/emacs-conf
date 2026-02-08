@@ -100,6 +100,12 @@
                 " "
                 (number-to-string (line-number-at-pos))))))
       
+;; Turn off log-edit-mode.
+;; (I hate elisp, give me a real programming language pls...)
+(setq auto-mode-alist
+      (assq-delete-all (car (rassoc 'log-edit-mode auto-mode-alist))
+                       auto-mode-alist))
+
 (global-unset-key "\C-j")
 
 (global-set-key "\C-jl" 'jj-print-line-log)
