@@ -120,5 +120,5 @@
 (global-set-key "\C-jo" 'jj-open)
 (global-set-key "\C-j\C-o" 'jj-open)
 
+;; Intentionally leaving out "\C-j\C-g" to avoid conflict with canceling an action.
 (global-set-key "\C-jg" 'jj-github)
-(global-set-key "\C-j\C-g" 'jj-github)
