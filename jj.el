@@ -99,6 +99,12 @@
 	            (jj-buffer-path)
                 " "
                 (number-to-string (line-number-at-pos))))))
+
+(defun jj-fix ()
+  "Run jj-fix."
+  (interactive)
+  (shell-command "jj fix"))
+
       
 ;; Turn off log-edit-mode.
 ;; (I hate elisp, give me a real programming language pls...)
@@ -119,6 +125,9 @@
 
 (global-set-key "\C-jo" 'jj-open)
 (global-set-key "\C-j\C-o" 'jj-open)
+
+(global-set-key "\C-jx" 'jj-fix)
+(global-set-key "\C-j\C-x" 'jj-fix)
 
 ;; Intentionally leaving out "\C-j\C-g" to avoid conflict with canceling an action.
 (global-set-key "\C-jg" 'jj-github)
