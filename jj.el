@@ -25,6 +25,9 @@
   "Get a diff of the current buffer and show it in a new buffer."
   (interactive)
 
+  ;; TODO: ask first?
+  (save-buffer)
+
   (let ((bufname "*jj-diff*")
         (diff (shell-command-to-string (concat "jj diff --git " (buffer-file-name)))))
     (progn
@@ -103,6 +106,7 @@
 (defun jj-fix ()
   "Run jj-fix."
   (interactive)
+  (save-some-buffers)
   (shell-command "jj fix"))
 
       
