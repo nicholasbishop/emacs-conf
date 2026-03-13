@@ -140,6 +140,9 @@
 ;; Load .qrc in xml-mode
 (add-to-list 'auto-mode-alist '("\\.qrc\\'" . xml-mode))
 
+;; Load .carbon in c++-mode
+(add-to-list 'auto-mode-alist '("\\.carbon\\'" . c++-mode))
+
 (defun shell-dir ()
   "Run shell in specified directory"
   (interactive)
