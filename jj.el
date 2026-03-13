@@ -107,7 +107,8 @@
   "Run jj-fix."
   (interactive)
   (save-some-buffers)
-  (shell-command "jj fix"))
+  (shell-command "jj fix")
+  (revert-buffer-quick))
 
       
 ;; Turn off log-edit-mode.
