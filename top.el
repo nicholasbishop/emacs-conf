@@ -221,3 +221,27 @@
   :ensure t
   :config
   (editorconfig-mode 1))
+
+;; From comint.el. Modify it to add "SSO" in the prefix list.
+(setq comint-password-prompt-regexp
+  (concat
+   "\\(^ *\\|"
+   (regexp-opt
+    '("Enter" "enter" "Enter same" "enter same" "Enter the" "enter the"
+      "Current"
+      "Enter Auth" "enter auth" "Old" "old" "New" "new" "'s" "login"
+      "Kerberos" "CVS" "UNIX" " SMB" "LDAP" "PEM" "SUDO"
+      "[sudo]" "doas" "Repeat" "Bad" "Retype" "Verify" "SSO")
+    t)
+   ;; Allow for user name to precede password equivalent (Bug#31075).
+   " +.*\\)"
+   "\\(?:" (regexp-opt password-word-equivalents) "\\|Response\\)"
+   "\\(?:\\(?:, try\\)? *again\\| (empty for no passphrase)\\| (again)\\)?"
+   ;; "[[:alpha:]]" used to be "for", which fails to match non-English.
+   "\\(?: [[:alpha:]]+ .+\\)?[[:blank:]]*"
+   "[" (apply #'string password-colon-equivalents) "][[:space:]]*\\'"
+   ;; The ccrypt encryption dialog doesn't end with a colon, so
+   ;; treat it specially.
+   "\\|^Enter encryption key: (repeat) *\\'"
+   ;; openssh-8.6p1 format: "(user@host) Password:".
+   "\\|^([^)@ \t\n]+@[^)@ \t\n]+) Password: *\\'"))
