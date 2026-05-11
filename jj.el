@@ -69,6 +69,16 @@
 	(message path)
 	(kill-new path)))
 
+(defun jj-where ()
+  "Add buffer's path (relative to the repo) and line number to the kill ring."
+  (interactive)
+  (let ((path-and-line
+         (concat (jj-buffer-path)
+                 ":"
+                 (number-to-string (line-number-at-pos)))))
+	(message path-and-line)
+	(kill-new path-and-line)))
+
 (defun jj-open ()
   (interactive)
   (let* ((filename (read-from-minibuffer "Filename: " ""))
@@ -127,6 +137,9 @@
 
 (global-set-key "\C-jf" 'jj-copy-buffer-path)
 (global-set-key "\C-j\C-f" 'jj-copy-buffer-path)
+
+(global-set-key "\C-jw" 'jj-where)
+(global-set-key "\C-j\C-w" 'jj-where)
 
 (global-set-key "\C-jo" 'jj-open)
 (global-set-key "\C-j\C-o" 'jj-open)
