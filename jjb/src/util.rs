@@ -3,12 +3,16 @@ use std::path::Path;
 use std::process::Command;
 
 fn cmd_str(cmd: &Command) -> String {
-    format!("`{cmd:?}`").replace('\"', "")
+    format!("{cmd:?}").replace('\"', "")
+}
+
+fn cmd_str_with_backticks(cmd: &Command) -> String {
+    format!("`{}`", cmd_str(cmd))
 }
 
 /// Run a `Command`.
 pub fn run_cmd(cmd: &mut Command) -> Result<()> {
-    let cmd_str = cmd_str(cmd);
+    let cmd_str = cmd_str_with_backticks(cmd);
     let status = cmd
         .status()
         .context(format!("failed to launch {cmd_str}"))?;
@@ -18,9 +22,15 @@ pub fn run_cmd(cmd: &mut Command) -> Result<()> {
     Ok(())
 }
 
+/// Log a `Command` and run it.
+pub fn log_and_run_cmd(cmd: &mut Command) -> Result<()> {
+    println!("{}", cmd_str(cmd));
+    run_cmd(cmd)
+}
+
 /// Run a `Command` and capture its stdout as a string.
 pub fn get_stdout(cmd: &mut Command) -> Result<String> {
-    let cmd_str = cmd_str(cmd);
+    let cmd_str = cmd_str_with_backticks(cmd);
     let output = cmd
         .output()
         .context(format!("failed to launch {cmd_str}"))?;

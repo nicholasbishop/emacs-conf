@@ -1,4 +1,4 @@
-use crate::util::{get_stdout, run_cmd};
+use crate::util::{get_stdout, log_and_run_cmd};
 use anyhow::{Context, Result, bail};
 use std::process::Command;
 
@@ -53,7 +53,7 @@ fn get_remote() -> Result<String> {
 }
 
 pub fn push(bookmark: &str) -> Result<()> {
-    run_cmd(Command::new("jj").args([
+    log_and_run_cmd(Command::new("jj").args([
         "bookmark",
         "move",
         bookmark,
@@ -61,7 +61,7 @@ pub fn push(bookmark: &str) -> Result<()> {
         get_commit_to_push()?,
     ]))?;
 
-    run_cmd(Command::new("jj").args([
+    log_and_run_cmd(Command::new("jj").args([
         "git",
         "push",
         "--bookmark",
