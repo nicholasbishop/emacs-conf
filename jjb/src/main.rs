@@ -2,6 +2,7 @@ mod blame_line;
 mod cache;
 mod file_url;
 mod line_number;
+mod push;
 mod util;
 
 use anyhow::Result;
@@ -29,6 +30,20 @@ enum Action {
         line: usize,
     },
 
+    /// Push a "branch" to a git remote.
+    ///
+    /// The bookmark (which must already exist) is moved to the current
+    /// commit (or the previous commit, if the current commit is empty),
+    /// and then the bookmark is pushed to the remote.
+    ///
+    /// The remote is chosen as follows: if there is only one remote, it
+    /// used. If there are two remotes, and one is named "origin", the
+    /// other remote is used. Otherwise it is an error.
+    Push {
+        /// Name of the bookmark to push.
+        bookmark: String,
+    },
+
     /// Print the log for a single branch.
     Stack {
         #[arg(default_value = "@")]
@@ -50,6 +65,7 @@ fn main() -> Result<()> {
             println!("{url}");
             Ok(())
         }
+        Action::Push { bookmark } => push::push(bookmark),
         Action::Stack { rev } => util::run_cmd(Command::new("jj").args([
             "log",
             "-r",
