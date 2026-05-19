@@ -17,7 +17,11 @@
   (let ((rev (jj-line-revision)))
 	(progn
 	  ;; output log
-	  (message (shell-command-to-string (concat "jj show -s " rev)))
+	  (message "%s"
+               (shell-command-to-string
+                (concat
+                 "jj log --no-graph --template 'self.description()' -r "
+                 rev)))
 	  ;; copy commit hash to kill ring
 	  (kill-new rev))))
 
