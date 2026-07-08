@@ -10,7 +10,6 @@ use clap::{Parser, Subcommand};
 use jjb::util;
 use line_number::LineNumber;
 use std::path::PathBuf;
-use std::process::Command;
 
 #[derive(Parser)]
 struct Args {
@@ -43,12 +42,6 @@ enum Action {
         /// Name of the bookmark to push.
         bookmark: String,
     },
-
-    /// Print the log for a single branch.
-    Stack {
-        #[arg(default_value = "@")]
-        rev: String,
-    },
 }
 
 fn main() -> Result<()> {
@@ -66,10 +59,5 @@ fn main() -> Result<()> {
             Ok(())
         }
         Action::Push { bookmark } => push::push(bookmark),
-        Action::Stack { rev } => util::run_cmd(Command::new("jj").args([
-            "log",
-            "-r",
-            &format!("ancestors(reachable({rev}, mutable()), 2)"),
-        ])),
     }
 }
