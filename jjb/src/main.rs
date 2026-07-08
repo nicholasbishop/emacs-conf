@@ -3,11 +3,11 @@ mod cache;
 mod file_url;
 mod line_number;
 mod push;
-mod util;
 
 use anyhow::Result;
 use cache::Cache;
 use clap::{Parser, Subcommand};
+use jjb::util;
 use line_number::LineNumber;
 use std::path::PathBuf;
 use std::process::Command;
