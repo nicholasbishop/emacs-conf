@@ -117,6 +117,7 @@
 (load "dev")
 (load "git")
 (load "jj")
+(load "jump")
 (load "gud-gdb-colors-mode")
 ;; don't ask about killing compilation
 (load "compilation-always-kill")
