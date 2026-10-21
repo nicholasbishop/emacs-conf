@@ -44,15 +44,17 @@
 
   ;; Search for a path:line:col regex backwards from current point.
   (save-excursion
-    ;; TODO: consider allowing the line and column to be missing.
+    ;; TODO: consider allowing the line to be missing.
     (re-search-backward src-loc-re)
     (let ((sl (get-src-loc-from-match nil)))
 
-      ;; TODO: don't load the file if it doesn't exist.
-      (find-file (src-loc-path sl))
-      (goto-line (src-loc-line sl))
-      (move-to-column (src-loc-column sl))
-
+      (if (file-exists-p (src-loc-path sl))
+          (progn
+            (find-file (src-loc-path sl))
+            (goto-line (src-loc-line sl))
+            (move-to-column (src-loc-column sl)))
+        (error "path not found: '%s'" (src-loc-path sl))
+       )
     )))
 
 (global-set-key "\C-c\\" 'bishjump)
