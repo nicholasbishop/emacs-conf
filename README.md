@@ -98,12 +98,6 @@ Adds a command `gud-gdb-colors-mode` which gives gud-gdb nicer
 syntax highlighting. Function names and line numbers in the
 backtrace format will be highlighted.
 
-### TeX (tex.el)
-Modifies the `latex-run-command` to output PDF rather than DVI,
-modifies the `tex-dvi-view-command` to run Evince rather than
-xdvi. These are still bound to the default `C-c C-v` and `C-c C-b`,
-respectively.
-
 ### Theme (theme.el)
 Includes a heavily modified version of the Zenburn theme by
 Dirk-Jan C. Binnema. My version kinda kills the `nice low-contrast`

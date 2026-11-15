@@ -122,8 +122,6 @@
 ;; don't ask about killing compilation
 (load "compilation-always-kill")
 (compilation-always-kill-mode 1)
-;; TeX
-(load "tex")
 ;; Small font (only on X11)
 (when (eq system-type 'gnu/linux)
   (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono 11")))
