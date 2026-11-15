@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t;-*-
+
 (require 'package)
 ;; Enable additional package sources
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)

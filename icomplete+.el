@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t;-*-
 ;;; icomplete+.el --- Extensions to `icomplete.el'.
 ;;
 ;; Filename: icomplete+.el

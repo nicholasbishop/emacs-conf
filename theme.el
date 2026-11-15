@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t;-*-
 ;;; zenburn-theme.el --- Dark and clean theme
 
 ;; Copyright (C) 2011 Free Software Foundation, Inc.

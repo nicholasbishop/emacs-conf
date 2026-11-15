@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t;-*-
 (define-derived-mode gud-gdb-colors-mode gud-mode
   (setq font-lock-defaults
 		'((;; function names

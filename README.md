@@ -7,6 +7,7 @@ Probably requires a recent version of Emacs.
 Put this in your `.emacs.el`:
 
 ```elisp
+;; -*- lexical-binding: t;-*-
 (add-to-list 'load-path "/path/to/emacs-conf/")
 (load "top")
 ```

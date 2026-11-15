@@ -1,4 +1,6 @@
-; winner!
+;; -*- lexical-binding: t;-*-
+
+;; winner!
 (winner-mode)
 
 ;; window movement
