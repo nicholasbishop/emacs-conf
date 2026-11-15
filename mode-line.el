@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t;-*-
+
 ;; Adapted from:
 ;; http://emacs-fu.blogspot.com/2011/08/customizing-mode-line.html
 

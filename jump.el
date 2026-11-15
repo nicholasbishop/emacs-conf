@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t;-*-
 ;; Jump around!
 
 (defconst src-loc-re " \\([^:< ]+\\):\\([0-9]+\\)\\(:\\([0-9]+\\)\\)?")

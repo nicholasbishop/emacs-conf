@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t;-*-
 ;;; google-c-style.el --- Google's C/C++ style for c-mode
 
 ;; Keywords: c, tools

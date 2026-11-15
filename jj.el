@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t;-*-
 ;; Jujutsu
 
 (defun jj-line-revision ()

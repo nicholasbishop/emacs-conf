@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t;-*-
 ;;; compilation-always-kill.el --- kill compilation without prompting
 
 ;; Copyright 2008, 2009, 2010 Kevin Ryde

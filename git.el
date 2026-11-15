@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t;-*-
 ;; git
 
 (defun git-add-current-buffer ()

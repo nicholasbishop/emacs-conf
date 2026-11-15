@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t;-*-
+
 ;; enable column-number-mode
 (setq-default column-number-mode t)
 

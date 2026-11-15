@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t;-*-
+
 (defun skel-py ()
   (interactive)
   (insert "#!/usr/bin/env python3
